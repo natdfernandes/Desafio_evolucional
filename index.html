@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Front-End - Tela 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Relatório de Alunos</h1>
+    </header>
+
+    <main>
+        <section id="part1">
+            <h2>Parte 1: Alunos e Filtros</h2>
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="degree-filter">Filtrar por Série (Degree):</label>
+                    <select id="degree-filter">
+                        <option value="">Todas as Séries</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="class-filter">Filtrar por Turma (Class):</label>
+                    <select id="class-filter">
+                        <option value="">Todas as Turmas</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="students-table">
+                    <thead>
+                        <tr>
+                            <th>Ra</th>
+                            <th>Nome do Aluno</th>
+                            <th>Série (Degree)</th>
+                            <th>Turma (Class)</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="students-table-body">
+                        <!-- Os dados dos alunos serão inseridos aqui via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
