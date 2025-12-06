@@ -2,11 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const degreeFilter = document.getElementById('degree-filter');
     const classFilter = document.getElementById('class-filter');
     const studentsTableBody = document.getElementById('students-table-body');
+    const generateStudentsBtn = document.getElementById('generate-students-btn');
+    generateStudentsBtn.addEventListener("click", generateStudents);
 
     let students = [];
     let degrees = [];
     let classes = [];
     let processedStudents = [];
+    let chart = null;
 
     async function loadData() {
         try {
@@ -142,6 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         processStudentData();
         renderTable();
+        renderChart();
     }
 
 
@@ -155,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
             saveChanges(row);
         } else if (target.classList.contains('cancel-btn')) {
             renderTable();
+            renderChart();
         }
     }
 
@@ -163,10 +168,74 @@ document.addEventListener('DOMContentLoaded', () => {
         populateFilters();
         processStudentData();
         renderTable();
+        renderChart();
 
         degreeFilter.addEventListener('change', renderTable);
         classFilter.addEventListener('change', renderTable);
         studentsTableBody.addEventListener('click', handleTableClick);
+    }
+
+    function generateStudents() {
+        const total = students.length;
+        const degreeIds = degrees.map(d => d.id);
+        for (let i = 0; i < 300; i++) {
+            const id = total + i + 1;
+            const name = `Nome do aluno ${id}`;
+            const ra = Math.floor(Math.random() * 1000000);
+            const degreeId = degreeIds[Math.floor(Math.random() * degreeIds.length)];
+            const classId = Math.floor(Math.random() * classes.length);
+            const student = {
+                id,
+                name,
+                ra,
+                degreeId,
+                classId,
+            }
+            students.push(student)
+        }
+        processStudentData();
+        renderTable();
+        renderChart();
+    }
+
+    function renderChart() {
+        if (chart !== null) {
+            chart.destroy();
+        }
+        const degreeCountMap = new Map(degrees.map(d => [d.id, 0]));
+
+        students.forEach(s => {
+            degreeCountMap.set(s.degreeId, degreeCountMap.get(s.degreeId) + 1);
+        });
+
+        const labels = degrees.map(d => d.name);
+        const data = degrees.map(d => degreeCountMap.get(d.id));
+
+        const ctx = document.getElementById('students-by-degree-chart');
+
+        chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Quantidade de alunos por degree',
+                    data: data,
+                    backgroundColor: '#4e73df',
+                    borderColor: '#2e59d9',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { stepSize: 1 }
+                    }
+                }
+            }
+        });
+
     }
 
     loadData();
