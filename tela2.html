@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Front-End - Tela 2</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Relatório de Professores</h1>
+    </header>
+
+    <main>
+        <!-- Parte 1: Filtros e Visualização -->
+        <section id="teacher-report">
+            <h2>Parte 1: Relacionamentos Atuais</h2>
+            <div class="filters-container">
+                <div class="filter-group">
+                    <label for="degree-filter">Filtrar por Série (Degree):</label>
+                    <select id="degree-filter">
+                        <option value="">Todas as Séries</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="class-filter">Filtrar por Turma (Class):</label>
+                    <select id="class-filter">
+                        <option value="">Todas as Turmas</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="relationships-table">
+                    <thead>
+                        <tr>
+                            <th>Professor</th>
+                            <th>Matéria</th>
+                            <th>Séries (Degrees)</th>
+                            <th>Turmas (Classes)</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dados populados via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Parte 2: Formulário de Adição -->
+        <section id="add-relationship">
+            <h2>Parte 2: Adicionar Novo Relacionamento</h2>
+            <form id="add-relationship-form">
+                <div class="filters-container">
+                    <div class="filter-group">
+                        <label for="new-teacher">Professor:</label>
+                        <select id="new-teacher" required></select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="new-matter">Matéria:</label>
+                        <select id="new-matter" required></select>
+                    </div>
+                </div>
+                <div id="degree-class-pairs">
+                    <!-- Campos de série/turma adicionados dinamicamente -->
+                </div>
+                <button type="button" id="add-degree-class-pair" class="action-button edit-btn">Adicionar
+                    Série/Turma</button>
+                <button type="submit" class="action-button save-btn">Salvar Novo Relacionamento</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="tela2.js"></script>
+</body>
+
+</html>

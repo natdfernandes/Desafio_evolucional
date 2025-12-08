@@ -69,28 +69,34 @@ h2 {
     overflow-x: auto;
 }
 
-#students-table {
+#students-table,
+#relationships-table {
     width: 100%;
     border-collapse: collapse;
 }
 
 #students-table th,
-#students-table td {
+#relationships-table th,
+#students-table td,
+#relationships-table td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
 }
 
-#students-table th {
+#students-table th,
+#relationships-table th {
     background-color: #007bff;
     color: white;
 }
 
-#students-table tbody tr:nth-child(even) {
+#students-table tbody tr:nth-child(even),
+#relationships-table tbody tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-#students-table tbody tr:hover {
+#students-table tbody tr:hover,
+#relationships-table tbody tr:hover {
     background-color: #e9ecef;
 }
 
@@ -131,4 +137,8 @@ td select {
 .chart-container {
     margin-top: 20px;
     max-width: 800px;
+}
+
+#degree-class-pairs {
+    margin-bottom: 20px;
 }
