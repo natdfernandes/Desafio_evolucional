@@ -13,6 +13,27 @@ header {
     padding-bottom: 10px;
 }
 
+nav ul {
+    display: inline-flex;
+    gap: 20px;
+}
+
+nav li {
+    list-style: none;
+}
+
+nav a {
+    color: #000000;
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+nav a:hover {
+    color: #fff;
+    background-color: #007bff;
+}
+
 h1 {
     color: #007bff;
 }
