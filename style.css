@@ -58,6 +58,12 @@ h2 {
     margin-bottom: 20px;
 }
 
+footer {
+    color: #fff;
+    text-align: center;
+    background-color: #007bff;
+}
+
 .controls-container {
     margin-bottom: 20px;
 }
